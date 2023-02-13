@@ -6,7 +6,7 @@ app.get("/", adminController.allUsers);
 
 // app.put("/update-user", adminController.updateUser);
 
-app.delete("/delete-user/:userId", adminController.deleteUser);
+app.delete("/:userId", adminController.deleteUser);
 
 
 module.exports = app;

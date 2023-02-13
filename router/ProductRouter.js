@@ -4,10 +4,10 @@ const productController = require("../controller/ProductController");
 
 app.post("/", productController.createProduct);
 
-app.get("/get-all-product", productController.getAllProduct);
+app.get("/", productController.getAllProduct);
 
-app.put("/update-product", productController.updateProduct);
+app.put("/", productController.updateProduct);
 
-app.delete("/delete-product/:productId", productController.deleteProduct);
+app.delete("/:productId", productController.deleteProduct);
 
 module.exports = app;

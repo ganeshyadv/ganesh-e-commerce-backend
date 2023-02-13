@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 // app.use(express.urlencoded({ limit: '25mb' }));
 app.use(expressFileupload());
 
-app.use("/api/v1", mainRouter)
+app.use("/api/v1", mainRouter);
 
 app.get("/", function (req, res) {
     res.send("API : under construction")

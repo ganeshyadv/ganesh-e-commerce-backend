@@ -4,9 +4,9 @@ const app = express()
 
 app.post("/", categoryController.createCategory);
 
-app.get("/get-category", categoryController.getCategory);
+app.get("/", categoryController.getCategory);
 
-app.put("/update-category", categoryController.updateCategory);
+app.put("/", categoryController.updateCategory);
 
 app.delete("/:categoryId", categoryController.deleteCategory);
 

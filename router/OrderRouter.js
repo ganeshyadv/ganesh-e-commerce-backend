@@ -4,11 +4,11 @@ const app = express()
 
 app.post("/", ordersController.createOrder);
 
-app.get("/get-orders", ordersController.getOrders);
+app.get("/", ordersController.getOrders);
 
-app.put("/update-order", ordersController.updateOrder);
+app.put("/", ordersController.updateOrder);
 
-app.delete("/delete-order/:orderId", ordersController.deleteOrder);
+app.delete("/:orderId", ordersController.deleteOrder);
 
 
 module.exports = app;
