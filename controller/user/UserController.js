@@ -50,15 +50,15 @@ class UserController{
         }
     };
 
-    async myProfile(req, res){
+    async getUserById(req, res){
         try {
-            let getMyProfile = await userServises.getMyProfile(req, res);
+            let getUser = await userServises.getUserById(req, res);
             res.statusCode = 200; // success
             res.json(
-                getMyProfile
+                getUser
             );
         } catch (error) {
-            console.log("myProfile page error", error);
+            console.log("getUserById page error", error);
         }
     }
 

@@ -6,6 +6,6 @@ app.post("/", userController.registretion);
 
 app.post("/login", userController.loginAuth);
 
-app.get("/my-profile", userController.myProfile);
+app.get("/getUserById/:userId", userController.getUserById);
 
 module.exports = app;

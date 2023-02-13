@@ -37,11 +37,12 @@ class UserServises{
         return response
     };
 
-    async getMyProfile(req, res) {
-        let userId = req.body.userId
-        let getMyProfile = await userModal.getUserById(userId)
-        console.log("getMyProfile", getMyProfile);
-        return getMyProfile
+    async getUserById(req, res) {
+        let userId = req.params.userId
+        console.log("userId", userId);
+        let getUserById = await userModal.getUserById(userId)
+        console.log("getUserById", getUserById);
+        return getUserById
     };
 
 }
