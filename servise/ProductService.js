@@ -41,12 +41,17 @@ class ProductService {
             description: req.body.description,
             categoryId: req.body.categoryId,
             price: req.body.price,
-            image: req.body.image,
-            id: req.body.userId
+            productId: req.body.productId
         };
-        console.log("data", data);
+        console.log("req.files", req.files);
+        console.log("req.body", req.body);
+        // return false;
+        const imageName = await commen.uploadImage(req.files.image);
+        data.image = imageName
+        console.log(data);
         await productModal.updateProduct(data)
         return true
+        
     };
     
     async deleteProduct(req, res) {
