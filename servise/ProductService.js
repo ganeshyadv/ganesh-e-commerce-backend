@@ -23,8 +23,16 @@ class ProductService {
 
     async getAllProduct(req, res) {
         let getAllProduct = await productModal.getAllProduct()
-        console.log("getAllProduct", getAllProduct);
-        return getAllProduct
+        let response = [];
+        let path = "http://127.0.0.1:3003/" + "/images/products/";
+        if (getAllProduct){
+            getAllProduct.forEach(product => {
+                product.path = path + product.image;
+                response.push(product);
+            });
+        }
+        console.log("response", response);
+        return response
     };
     
     async updateProduct(req, res) {
