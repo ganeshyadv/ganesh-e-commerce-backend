@@ -6,6 +6,8 @@ app.post("/", categoryController.createCategory);
 
 app.get("/", categoryController.getCategory);
 
+app.get("/get-category-by-id/:catId", categoryController.getCategoryById);
+
 app.put("/", categoryController.updateCategory);
 
 app.delete("/:categoryId", categoryController.deleteCategory);

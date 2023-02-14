@@ -6,7 +6,7 @@ class ProductModal {
 
     createProduct(data) {
         return new Promise(async function (resolve, reject) {
-            let insertQury = `INSERT INTO products(title, description, perentId, price, image) VALUES(${connection.escape(data.title)},'${data.description}','${data.perentId}','${data.price}','${data.image}')`
+            let insertQury = `INSERT INTO products(title, description, category_id, price, image) VALUES(${connection.escape(data.title)},'${data.description}','${data.categoryId}','${data.price}','${data.image}')`
             connection.query(insertQury, function (error, result) {
                 if (error) {
                     reject(error)
@@ -32,7 +32,7 @@ class ProductModal {
     
     updateProduct(data) {
         return new Promise(async function (resolve, reject) {
-            let insertQury = `UPDATE products SET title = ${connection.escape(data.title)}, description = '${data.description}', perentId = '${data.perentId}', price = '${data.price}', image = '${data.image}' WHERE id = '${data.id}'`
+            let insertQury = `UPDATE products SET title = ${connection.escape(data.title)}, description = '${data.description}', category_id = '${data.categoryId}', price = '${data.price}', image = '${data.image}' WHERE id = '${data.id}'`
             connection.query(insertQury, function (error, result) {
                 if (error) {
                     reject(error)

@@ -29,10 +29,23 @@ class CategoryModal {
             })
         })
     };
+
+    getCategoryById(catId) {
+        return new Promise(async function (resolve, reject) {
+            let insertQury = `SELECT * FROM category WHERE id = ${catId}`
+            connection.query(insertQury, function (error, result) {
+                if (error) {
+                    reject(error)
+                } else {
+                    resolve(result)
+                }
+            })
+        })
+    };
     
     updateCategory(data) {
         return new Promise(async function (resolve, reject) {
-            let insertQury = `UPDATE category SET title = ${connection.escape(data.title)}, description = '${data.description}', perentId = '${data.perentId}' WHERE id = '${data.userId}'`
+            let insertQury = `UPDATE category SET title = ${connection.escape(data.title)}, description = '${data.description}', perentId = '${data.perentId}' WHERE id = '${data.categoryId}'`
             connection.query(insertQury, function (error, result) {
                 if (error) {
                     reject(error)

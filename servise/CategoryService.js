@@ -19,12 +19,20 @@ class CategoryService{
         return getAllCategory
     };
 
+    async getCategoryById(req, res) {
+        let catId = req.params.catId
+        console.log("catId", catId);
+        let getCategoryById = await categoryModal.getCategoryById(catId)
+        console.log("getCategoryById", getCategoryById);
+        return getCategoryById
+    };
+
     async updateCategory(req, res) {
         let data = {
             title: req.body.title,
             description: req.body.description,
             perentId: req.body.perentId,
-            userId: req.body.userId
+            categoryId: req.body.categoryId
         };
         console.log("data", data);
         await categoryModal.updateCategory(data)

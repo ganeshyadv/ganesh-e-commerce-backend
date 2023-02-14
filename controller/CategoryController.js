@@ -35,6 +35,18 @@ class CategoryController {
         }
     };
 
+    async getCategoryById(req, res) {
+        try {
+            let getCategoryById = await categoryServises.getCategoryById(req, res);
+                res.statusCode = 200; // success
+                res.json(
+                    getCategoryById
+                );
+        } catch (error) {
+            console.log("controller getCategoryById page error", error);
+        }
+    };
+
     async updateCategory(req, res) {
         try {
             let validation = await categoryValidation.updateCategory(req);

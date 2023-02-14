@@ -12,7 +12,7 @@ class ProductValidation {
         let schema = joi.object({
             title: joi.string().required(),
             description: joi.string().required(),
-            perentId: joi.number().required(),
+            categoryId: joi.number().required(),
             price: joi.number().required(),
         })
         let response = await validation.createCategory(schema, req.body);

@@ -8,7 +8,7 @@ class ProductService {
         let data = {
             title: req.body.title,
             description: req.body.description,
-            perentId: req.body.perentId,
+            categoryId: req.body.categoryId,
             price: req.body.price,
         };
         console.log("req.files", req.files);
@@ -39,7 +39,7 @@ class ProductService {
         let data = {
             title: req.body.title,
             description: req.body.description,
-            perentId: req.body.perentId,
+            categoryId: req.body.categoryId,
             price: req.body.price,
             image: req.body.image,
             id: req.body.userId

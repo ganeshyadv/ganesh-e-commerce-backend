@@ -21,7 +21,7 @@ class CategoryValidation {
             title: joi.string().required(),
             description: joi.string().required(),
             perentId: joi.number().required(),
-            userId: joi.number().required()
+            categoryId: joi.number().required()
         })
        const response = await validation.createCategory(schema, req.body)
         return response;
