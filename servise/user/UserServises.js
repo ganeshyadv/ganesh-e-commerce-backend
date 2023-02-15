@@ -10,6 +10,12 @@ class UserServises {
         return true
     };
 
+    async updateUser(req, res) {
+        let data = req.body;
+        let insertUser = await userModal.updateUser(data)
+        return true
+    };
+
     async loginAuth(req, res) {
         let response = {
             status: "",

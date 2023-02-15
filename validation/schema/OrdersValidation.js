@@ -37,7 +37,7 @@ class OrdersValidation {
             billingCity: joi.string().required(),
             billingPincode: joi.number().required(),
             paymentMethod: joi.string().required(),
-            userId: joi.number().required()
+            orderId: joi.number().required()
         })
         const response = await validation.createCategory(schema, req.body)
         return response;

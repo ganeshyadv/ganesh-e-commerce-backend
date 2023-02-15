@@ -41,7 +41,7 @@ class OrdersService {
             billingCity: req.body.billingCity,
             billingPincode: req.body.billingPincode,
             paymentMethod: req.body.paymentMethod,
-            userId: req.body.userId
+            orderId: req.body.orderId
         };
         console.log("data", data);
         await ordersModal.updateOrder(data)

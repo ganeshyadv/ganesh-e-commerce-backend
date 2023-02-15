@@ -32,7 +32,7 @@ class OrdersModal {
 
     updateOrder(data) {
         return new Promise(async function (resolve, reject) {
-            let insertQury = `UPDATE orders SET full_name = '${(data.fullName)}', email = '${data.email}', primary_contact = '${data.primaryContact}', alternet_contact = '${data.alternetContact}', shipping_address = '${data.shippingAddress}', shipping_city = '${data.shippingCity}', shipping_pincode = '${data.shippingPincode}', billing_address = '${data.billingAddress}', billing_city = '${data.billingCity}', billing_pincode = '${data.billingPincode}', payment_method = '${data.paymentMethod}' WHERE id = '${data.userId}'`
+            let insertQury = `UPDATE orders SET full_name = '${(data.fullName)}', email = '${data.email}', primary_contact = '${data.primaryContact}', alternet_contact = '${data.alternetContact}', shipping_address = '${data.shippingAddress}', shipping_city = '${data.shippingCity}', shipping_pincode = '${data.shippingPincode}', billing_address = '${data.billingAddress}', billing_city = '${data.billingCity}', billing_pincode = '${data.billingPincode}', payment_method = '${data.paymentMethod}' WHERE id = '${data.orderId}'`
             connection.query(insertQury, function (error, result) {
                 if (error) {
                     reject(error)
@@ -43,7 +43,7 @@ class OrdersModal {
         })
     };
 
-    deleteOrder(    orderId) {
+    deleteOrder(orderId) {
         return new Promise(async function (resolve, reject) {
             let insertQury = ` DELETE FROM orders WHERE id = ${orderId}`
             connection.query(insertQury, function (error, result) {
