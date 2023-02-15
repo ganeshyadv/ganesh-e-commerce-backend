@@ -18,7 +18,7 @@ app.get("/", function (req, res) {
     res.send("API : under construction")
 })
 
-const port = process.env.port
+const port = process.env.PORT
 app.listen(port, function () {
     console.log("server started on port ", port);
 })

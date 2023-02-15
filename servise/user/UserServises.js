@@ -2,9 +2,7 @@ const userModal = require("../../modal/UserModal");
 const jwt = require("jsonwebtoken");
 
 class UserServises {
-    constructor() {
-        console.log("JWT_PRIVATE_KEY", process.env.JWT_PRIVATE_KEY);
-    }
+    constructor() { }
 
     async registretion(req, res) {
         let data = req.body;
