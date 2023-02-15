@@ -18,6 +18,7 @@
     "express-fileupload": "^1.4.0",
     "joi": "^17.7.0",
     "joi-image-extension": "^1.0.0",
+    "jsonwebtoken": "^9.0.0",
     "mysql": "^2.18.1",
     "sha1": "^1.1.1"
   }

@@ -61,6 +61,18 @@ class UserController{
             console.log("getUserById page error", error);
         }
     }
+    
+    async getUserInfo(req, res){
+        try {
+            let getUser = await userServises.getUserInfo(req, res);
+            res.statusCode = 200; // success
+            res.json(
+                getUser
+            );
+        } catch (error) {
+            console.log("getUserInfo page error", error);
+        }
+    }
 
 
 }

@@ -1,15 +1,18 @@
 const userModal = require("../../modal/UserModal");
+const jwt = require("jsonwebtoken");
 
-class UserServises{
-    constructor(){}
+class UserServises {
+    constructor() {
+        console.log("JWT_PRIVATE_KEY", process.env.JWT_PRIVATE_KEY);
+    }
 
-   async registretion(req, res){
+    async registretion(req, res) {
         let data = req.body;
         let insertUser = await userModal.inserUser(data)
-        return true  
+        return true
     };
 
-    async loginAuth(req, res){
+    async loginAuth(req, res) {
         let response = {
             status: "",
             message: "",
@@ -24,7 +27,9 @@ class UserServises{
             if (userInfo && userInfo.password == password) {
                 response.status = "SUCCESS";
                 response.message = "SUCCESSFULL";
-                response.data = userInfo.id;
+                const token = jwt.sign({ userData : userInfo.id }, process.env.JWT_PRIVATE_KEY);
+                console.log("\n\n &&&& ****** token ******* &&&&", token);
+                response.token = token;
             } else {
                 response.status = "ERROR";
                 response.message = "Invelid Password";
@@ -43,6 +48,14 @@ class UserServises{
         let getUserById = await userModal.getUserById(userId)
         console.log("getUserById", getUserById);
         return getUserById
+    };
+    
+    async getUserInfo(req, res) {
+        let userId = req.userId
+        console.log("userId", userId);
+        let getUserById = await userModal.getUserById(userId)
+        console.log("getUserById", getUserById);
+        return getUserById;
     };
 
 }
