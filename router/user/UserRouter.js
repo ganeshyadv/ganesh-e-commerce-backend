@@ -11,7 +11,6 @@ app.get("/getUserById/:userId", userController.getUserById);
 
 app.get("/", validateToken, userController.getUserInfo);
 
-
 function validateToken(req, res, next) {
     if (req.headers.authorization) {
         let token = req.headers.authorization.split(" ").splice(-1).toString();
