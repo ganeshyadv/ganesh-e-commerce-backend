@@ -16,6 +16,12 @@ class UserServises {
         return true
     };
 
+    async updateProfile(req, res) {
+        let data = req.body;
+        let insertUser = await userModal.updateProfile(data)
+        return true
+    };
+
     async loginAuth(req, res) {
         let response = {
             status: "",
@@ -60,6 +66,12 @@ class UserServises {
         let getUserById = await userModal.getUserById(userId)
         console.log("getUserById", getUserById);
         return getUserById;
+    };
+
+    async udatePassword(data) {
+        let updatePassword = await userModal.updatePassword(data)
+
+        return true;
     };
 
 }

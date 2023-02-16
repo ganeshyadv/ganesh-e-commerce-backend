@@ -5,11 +5,15 @@ const jwt = require("jsonwebtoken");
 
 app.post("/", userController.registretion);
 
+app.put("/", userController.updateUser);
+
 app.post("/login", userController.loginAuth);
 
 app.get("/getUserById/:userId", userController.getUserById);
 
 app.get("/", validateToken, userController.getUserInfo);
+
+app.put("/updatePassword", validateToken, userController.updatePassword);
 
 function validateToken(req, res, next) {
     if (req.headers.authorization) {

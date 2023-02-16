@@ -56,6 +56,43 @@ class UserModel{
             })
         })
     };
+    updateProfile(data){
+        console.log("data", data);
+        let user = {
+            firstName: data.firstName,
+            lastName: data.lastName,
+            address: data.address,
+            gender: data.gender,
+            state: data.state,
+            city: data.city,
+            dob: data.dob,
+            pincode: data.pincode,
+            userId: data.userId
+        };
+        return new Promise( async function (resolve, reject) {
+            let insertQury = `UPDATE users SET first_name = ${connection.escape(user.firstName)}, last_name = '${user.lastName}',address = '${user.address}',gender = '${user.gender}',state = '${user.state}',city = '${user.city}',dob = '${user.dob}',pincode = '${user.pincode}' WHERE id = '${user.userId}'`
+           await connection.query(insertQury, function (error, result) {
+                if (error) {
+                    reject(error)
+                } else {
+                    resolve(true)
+                }
+            })
+        })
+    };
+    updatePassword(data){
+        console.log("data", data);
+        return new Promise( async function (resolve, reject) {
+            let insertQury = `UPDATE users SET password = ${data.newPassword} WHERE id = '${data.userId}'`
+           await connection.query(insertQury, function (error, result) {
+                if (error) {
+                    reject(error)
+                } else {
+                    resolve(true)
+                }
+            })
+        })
+    };
 
     getUserByEmail(username){
         return new Promise(function (resolve, reject) {

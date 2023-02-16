@@ -24,6 +24,54 @@ class UserController{
             console.log("controller registretion page error", error);
         }
     };
+    async updateUser(req, res){
+        try {
+            console.log("req.body", req.body);
+            let data = req.body;
+            let validation = await userValidation.updateProfile(data);
+            if (validation && validation.status && validation.status == "ERROR") {
+                res.statusCode = 400; //bad request
+                res.json(validation);
+                return false;
+            }
+            await userServises.updateProfile(req, res);
+            res.statusCode = 201; //when the new record will be created in the DB
+            res.json({
+                message: "User Has Been Update"
+            })
+        } catch (error) {
+            console.log("controller updateUser page error", error);
+        }
+    };
+
+    async updatePassword(req, res){
+        try {
+            let data = req.body;
+            data.userId = req.userId
+            console.log("data", data);
+            let validation = await userValidation.updatePassword(data);
+            if (validation && validation.status && validation.status == "ERROR") {
+                res.statusCode = 400; //bad request
+                res.json(validation);
+                return false;
+            }
+            let getUserById = await userServises.getUserInfo(req, res);
+            if (getUserById[0].password != req.body.currentPassword) {
+                res.statusCode = 400; //bad request
+                res.json(
+                    {message: "current password is incorrect"}
+                );
+                return false;
+            }
+            await userServises.udatePassword(data);
+            res.statusCode = 201; //when the new record will be created in the DB
+            res.json({
+                message: "User Password Has Been Update"
+            })
+        } catch (error) {
+            console.log("controller updateUser page error", error);
+        }
+    };
 
     async loginAuth(req, res){
         try {
