@@ -37,6 +37,20 @@ class ProductController {
         }
     };
 
+    async getProductsById(req, res) {
+        // let data = req.params.productsId
+        // console.log("data", data);
+        try {
+            let getProductsById = await productServises.getProductsById(req, res);
+            res.statusCode = 200; // success
+            res.json(
+                getProductsById
+            );
+        } catch (error) {
+            console.log("controller getProductsById page error", error);
+        }
+    };
+
     async updateProduct(req, res) {
         try {
             let validation = await productValidation.updateProduct(req);

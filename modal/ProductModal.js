@@ -29,6 +29,19 @@ class ProductModal {
             })
         })
     };
+
+    getProductsById(data) {
+        return new Promise(async function (resolve, reject) {
+            let insertQury = `SELECT * FROM products WHERE id IN (${data})`
+            connection.query(insertQury, function (error, result) {
+                if (error) {
+                    reject(error)
+                } else {
+                    resolve(result)
+                }
+            })
+        })
+    };
     
     updateProduct(data) {
         return new Promise(async function (resolve, reject) {

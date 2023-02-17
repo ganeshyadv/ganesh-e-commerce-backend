@@ -10,4 +10,6 @@ app.put("/", productController.updateProduct);
 
 app.delete("/:productId", productController.deleteProduct);
 
+app.get("/cart-items/:productsId", productController.getProductsById);
+
 module.exports = app;

@@ -34,6 +34,22 @@ class ProductService {
         console.log("response", response);
         return response
     };
+
+    async getProductsById(req, res) {
+        let data = req.params.productsId
+        console.log("data", data);
+        let getProductsById = await productModal.getProductsById(data)
+        let response = [];
+        let path = "http://127.0.0.1:3003/" + "/images/products/";
+        if (getProductsById){
+            getProductsById.forEach(product => {
+                product.path = path + product.image;
+                response.push(product);
+            });
+        }
+        console.log("response", response);
+        return response
+    };
     
     async updateProduct(req, res) {
         let data = {
