@@ -16,9 +16,9 @@ class ProductValidation {
             price: joi.number().required(),
         })
         let response = await validation.createCategory(schema, req.body);
-        /* schema = joi.object({
-            image: joi.any().required(),
-        }); */
+        // schema = joi.object({
+        //     image: joi.any().required(),
+        // });
         // response = await validation.createCategory(schema, req.files);
         return response;
     };
